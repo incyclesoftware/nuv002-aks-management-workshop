@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: content-web
+spec:
+  selector:
+    matchLabels:
+      app: content-web
+  template:
+    metadata:
+      labels:
+        app: content-web
+    spec:
+      containers:
+      - image: whatthehackmsft/content-web
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "250m"
+          requests:
+            memory: "250Mi"
+            cpu: "500m"            
+        name: content-web
+        env:
+        - name: CONTENT_API_URL
+          value: http://content-api:3001
+        tty: true
+        ports:
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: content-web
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: content-web
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: content-web
+  annotations:
+    kubernetes.io/ingress.class: azure/application-gateway
+spec:
+  rules:
+    - http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: content-web
+              port:
+                number: 80
