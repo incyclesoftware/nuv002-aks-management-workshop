@@ -7,7 +7,7 @@ In this exercise, we will enable Azure AD Authentication and RBAC for our cluste
 
 ## Description
 - Start by updating your cluster to use Azure AD for authentication and RBAC, as well as disabling local user accounts. This can be accomplished with `az aks update`. There are three flags you'll need to provide: One disables local user accounts, one enables Azure AD integration, and one enables Azure AD RBAC.
-- Once your cluster is updated, delete your `.kube` folder: `rmdir /s %HOMEPATH%\.kube`. **Warning: this will delete credentials for all logged in clusters**
+
 - Log in again with `az aks get-credentials`
 - Attempt to list all of the pods in your `fabmedical` namespace. You should be denied.
 - Assign yourself the `Azure Kubernetes Service RBAC Reader` role. This is a read-only role.

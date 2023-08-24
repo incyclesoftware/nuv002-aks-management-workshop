@@ -10,8 +10,8 @@ We started out with some very simple, default networking that Kubernetes gives u
 
 In this challenge you will be installing an Ingress Controller and learning how the "Ingress" resource in Kubernetes works. 
 
-- Delete the existing content-web deployment and service.
 - Install the App Gateway ingress controller using the Azure Portal (you can also use the CLI, but it's *much* more complicated!).
+	- Creating the app gateway will take a few minutes. Be patient!
 - Deploy the content-web service and create an Ingress resource for it. 
 	- The reference template can be found in the Challenge 6 Resources folder: `template-web-ingress-deploy.yaml`
 

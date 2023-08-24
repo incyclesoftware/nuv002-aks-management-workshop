@@ -7,7 +7,7 @@ Get cluster resource ID: az aks show -g dm-aks-lab-rg -n wth-aks02-poc -o json -
 Get current user ID: az ad signed-in-user show --query id
 
 `az aks update -g dm-aks-lab-rg -n wth-aks02-poc --enable-azure-rbac --enable-aad --disable-local-accounts``
-Delete `.kube`
+
 Run `az aks get-credentials -g dm-aks-lab-rg -n wth-aks02-poc`
 Try to list pod - failure
 Assign self 'Azure Kubernetes Service RBAC Reader'
